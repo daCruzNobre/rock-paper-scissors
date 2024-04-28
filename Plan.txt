@@ -1,0 +1,74 @@
+We are writing a rock, papers and scissors game to be played at the console of a browser.
+for that, we need to prompt the player with 3 choices(rock, paper or scissors). After that, get the player input.
+Then, we need a function that randomly gets one of the three choices to be the computers choice. After that, we need to compare
+the two choices(computer and user), and them output the result, which can be one of three: winner, looser or draw.
+
+SUBROUTINE getComputerChoice():
+            SET min = rounded min value(0)
+            SET max = rounded mx value(2)
+            CALL random method, multiply by (max - min + 1) + min
+            SET choice as the result of calculation
+            RETURN computerChoice
+        END SUBROUTINE
+
+        SUBROUTINE getHumanChoice():
+            CREATE choice variable
+            PROMPT the user with the choices
+            STORE the user choice in playerInput
+            CASE playerInput === 'rock' 
+                SET choice to 0;
+            CASE playerInput === 'paper' 
+                SET choice to 1;
+            CASE playerInput === 'scissors' 
+                SET choice to 2;
+            DEFAULT
+                return -1    
+            RETURN humanChoice;
+        END SUBROUTINE
+
+SUBROUTINE  sleep(miliseconds) 
+    CREATE new promise object promise(resolve{CALL setTimeout method(resolve, miliseconds)}) 
+END SUBROUTINE           
+
+SUBROUTINE playGame  
+    CREATE humanScore variable to hold the humanScore
+    CREATE computerScore variable to hold the humanScore
+    SET humanScore to 0
+    SET computerScore to 0
+
+    SUBROUTINE playRound(computerChoice, humanChoice):
+        IF humanChoice === -1
+            SHOW error message 'input not valid, please enter a valid choice'
+            RETURN
+        ELSE IF humanChoice === computerChoice
+            SHOW draw message "Its a draw!  
+        ELSE IF (humanChoice === 0 AND computerChoice === 2 OR 
+                humanChoice === 1 AND computerChoice === 0 OR
+                humanChoice === 2 AND computerChoice === 1)
+                SHOW "you win " message
+                humanScore ++
+        ELSE
+            SHOW "Computer wins' message   
+            computerScore ++
+    END SUBROUTINE        
+
+    WHILE humanScore <= 5 OR computerScore <=5:
+        SET computerChoice to the return value of getComputerChoice
+        SET humanChoice to the return value of getHumanChoice
+        CALL playRound(computerChoice, humanChoice)
+        CALL sleep(2000) function then continue
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+    
